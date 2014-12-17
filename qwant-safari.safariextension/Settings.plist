@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>DefaultValue</key>
+		<true/>
+		<key>Key</key>
+		<string>google</string>
+		<key>Secure</key>
+		<false/>
+		<key>Title</key>
+		<string>Embed in Google</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<true/>
+		<key>Key</key>
+		<string>yahoo</string>
+		<key>Secure</key>
+		<false/>
+		<key>Title</key>
+		<string>Embed in Yahoo</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<true/>
+		<key>Key</key>
+		<string>bing</string>
+		<key>Title</key>
+		<string>Embed in Bing</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<true/>
+		<key>Key</key>
+		<string>yandex</string>
+		<key>Secure</key>
+		<false/>
+		<key>Title</key>
+		<string>Embed in Yandex</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<true/>
+		<key>Key</key>
+		<string>mail</string>
+		<key>Secure</key>
+		<false/>
+		<key>Title</key>
+		<string>Embed in Mail.ru</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<true/>
+		<key>Key</key>
+		<string>saveLastSearch</string>
+		<key>Secure</key>
+		<false/>
+		<key>Title</key>
+		<string>Save your last search</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<true/>
+		<key>Key</key>
+		<string>engine</string>
+		<key>Title</key>
+		<string>Define Qwant as default search engine</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<true/>
+		<key>Key</key>
+		<string>justInstalled</string>
+		<key>Secure</key>
+		<false/>
+	</dict>
+</array>
+</plist>

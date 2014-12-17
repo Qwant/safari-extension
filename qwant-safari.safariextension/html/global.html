@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Qwant for Safari</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			'use strict';
+
+			var QWANT_URL = 'https://www.qwant.com/?q=',
+				SMART_URL = 'https://www.qwant.com/search/smart/?q=',
+				THANK_URL = 'https://www.qwant.com/extension/thanks/safari',
+				SHRTN_URL = 'http://qwt.co/api.php?url=',
+				lastClickedLink,
+				lastSelectedText;
+
+			if (safari.extension.settings.justInstalled === true) {
+				openTab(THANK_URL);
+				safari.extension.settings.justInstalled = false;
+			}
+
+			function openTab(url) {
+				var tab = safari.application.activeBrowserWindow.openTab();
+				tab.url = url;
+				tab.activate();
+			}
+
+			function checkMessage(event) {
+				if (event.name === 'ask_embed') {
+					var req = new XMLHttpRequest();
+					req.open('GET', SMART_URL + event.message.query + '&locale=' + getLocale(event.message.ext) + '&client=safari-ext', true);
+					req.onreadystatechange = function (data) {
+						if (req.readyState !== 4) { return; }
+						var res = JSON.parse(req.responseText);
+						localStorage.lastSearch = event.message.query;
+						event.target.page.dispatchMessage('reply_embed', {json: res.result.items, query: event.message.query});
+					};
+					req.send(null);
+				}
+				if (event.name === 'ask_allowed') {
+					var allowed;
+					switch (event.message.hostname) {
+						case 'bing':
+							allowed = safari.extension.settings.bing;
+							break;
+						case 'google':
+							allowed = safari.extension.settings.google;
+							break;
+						case 'mail':
+							allowed = safari.extension.settings.mail;
+							break;
+						case 'yahoo':
+							allowed = safari.extension.settings.yahoo;
+							break;
+						case 'yandex':
+							allowed = safari.extension.settings.yandex;
+							break;
+					};
+					event.target.page.dispatchMessage('reply_allowed', {allowed:allowed})
+				}
+			}
+
+			function handleCommand(event) {
+				if (event.command === 'cm-search') {
+					openTab(QWANT_URL + lastSelectedText);
+				}
+				if (event.command === 'cm-qwtco') {
+					var req = new XMLHttpRequest();
+					req.open('GET', SHRTN_URL + lastClickedLink, true);
+					req.onreadystatechange = function (data) {
+						if (req.readyState !== 4) { return; }
+						window.prompt("Copy to clipboard: CMD + C, Enter", req.responseText);
+					};
+					req.send(null);
+				}
+			}
+
+			function getLocale(ext) {
+				var handledLanguages	= {
+					'co': 'en_US',
+					'en': 'en_US',
+					'uk': 'en_GB',
+					'us': 'en_US',
+					'es': 'es_ES',
+					'it': 'it_IT',
+					'de': 'de_DE',
+					'fr': 'fr_FR',
+					'nl': 'nl_NL',
+					'pt': 'pt_PT',
+					'ru': 'ru_RU',
+					'ja': 'ja_JP',
+					'ar': 'ar_XA',
+					'pl': 'pl_PL',
+					'el': 'el_GR',
+					'tr': 'tr_TR',
+					'he': 'he_IL',
+					'fi': 'fi_FI',
+					'zh': 'zh_CN'
+				};
+				if (!(ext in handledLanguages)) {
+					if (!(ext in handledLanguages)) {
+						return 'en_US';
+					} else {
+						return handledLanguages[ext];
+					}
+				} else {
+					return handledLanguages[ext];
+				}
+			}
+
+			function handleContextMenu(event) {
+				var query = event.userInfo;
+				if (query.type === 'text') {
+					lastSelectedText = query.data;
+					event.contextMenu.appendContextMenuItem("cm-search", "Search '" + lastSelectedText.substr(0, 15) + "[...]' with Qwant");
+				}
+			}
+
+			function handleBeforeSearch(e) {
+				e.preventDefault();
+				var qwtEngine = safari.extension.settings.engine,
+					url;
+				if (false === qwtEngine) {
+					url = 'http://' + e.query + '.com'
+				} else {
+					url = 'https://www.qwant.com/?q=' + encodeURIComponent(e.query).replace(/%20/g,'+');
+				}
+				e.target.url = url;
+			}
+
+			safari.application.addEventListener('message', checkMessage, false);
+			safari.application.addEventListener('contextmenu', handleContextMenu, false);
+			safari.application.addEventListener('command', handleCommand, false);
+			safari.application.addEventListener('beforeSearch', handleBeforeSearch, false);
+		</script>
+	</body>
+</html>
