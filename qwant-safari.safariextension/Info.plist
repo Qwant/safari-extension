@@ -469,7 +469,6 @@
 				<string>www.google.co.zw</string>
 				<string>www.google.cat</string>
 				<string>encrypted.google.com</string>
-				<string>qwt.co</string>
 			</array>
 			<key>Include Secure Pages</key>
 			<true/>

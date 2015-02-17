@@ -11,7 +11,6 @@
 			var QWANT_URL = 'https://www.qwant.com/?q=',
 				SMART_URL = 'https://www.qwant.com/search/smart/?q=',
 				THANK_URL = 'https://www.qwant.com/extension/thanks/safari',
-				SHRTN_URL = 'http://qwt.co/api.php?url=',
 				lastClickedLink,
 				lastSelectedText;
 
@@ -64,15 +63,6 @@
 			function handleCommand(event) {
 				if (event.command === 'cm-search') {
 					openTab(QWANT_URL + lastSelectedText);
-				}
-				if (event.command === 'cm-qwtco') {
-					var req = new XMLHttpRequest();
-					req.open('GET', SHRTN_URL + lastClickedLink, true);
-					req.onreadystatechange = function (data) {
-						if (req.readyState !== 4) { return; }
-						window.prompt("Copy to clipboard: CMD + C, Enter", req.responseText);
-					};
-					req.send(null);
 				}
 			}
 
