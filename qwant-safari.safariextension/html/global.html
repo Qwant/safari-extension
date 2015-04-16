@@ -9,7 +9,7 @@
 			'use strict';
 
 			var QWANT_URL = 'https://www.qwant.com/?q=',
-				SMART_URL = 'https://www.qwant.com/search/smart/?q=',
+				SMART_URL = 'https://api.qwant.com/api/search/smart/?q=',
 				THANK_URL = 'https://www.qwant.com/extension/thanks/safari',
 				lastClickedLink,
 				lastSelectedText;
@@ -114,7 +114,7 @@
 				if (false === qwtEngine) {
 					url = 'http://' + e.query + '.com'
 				} else {
-					url = 'https://www.qwant.com/?q=' + encodeURIComponent(e.query).replace(/%20/g,'+');
+					url = QWANT_URL + encodeURIComponent(e.query).replace(/%20/g,'+');
 				}
 				e.target.url = url;
 			}
