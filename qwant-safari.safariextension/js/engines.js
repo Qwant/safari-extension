@@ -126,10 +126,7 @@ var show = function () {
 
 		var lang = navigator.language.slice(0, 2) || navigator.userLanguage.slice(0, 2) || data.ext;
 
-			safari.self.tab.dispatchMessage('ask_embed', {query: data.query, ext: lang});
-
-		document.body.addEventListener('mousedown', exchange, false);
-
+		safari.self.tab.dispatchMessage('ask_embed', {query: data.query, ext: lang});
 	} else {
 		console.log('AddOn disabled on this page or query empty');
 	}
@@ -506,13 +503,7 @@ if (hostname === 'google') {
 	}
 }
 
-function exchange(e) {
-	e = e || window.event;
-	var target = e.target || e.srcElement;
-	if (target.className.match('qwt-link')) {
-		target.setAttribute('href', target.getAttribute('data-src'));
-	}
-};
+
 /**
  * Returns user locale
  * @param ext

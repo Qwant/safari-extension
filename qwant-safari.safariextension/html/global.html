@@ -33,7 +33,7 @@
 						if (req.readyState !== 4) { return; }
 						var res = JSON.parse(req.responseText);
 						localStorage.lastSearch = event.message.query;
-						event.target.page.dispatchMessage('reply_embed', {json: res.result.items, query: event.message.query});
+						event.target.page.dispatchMessage('reply_embed', {json: res.json.data.result, query: event.message.query});
 					};
 					req.send(null);
 				}
