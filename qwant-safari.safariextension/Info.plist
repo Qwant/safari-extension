@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>QWANT</string>
 	<key>Builder Version</key>
-	<string>534.57.2</string>
+	<string>12602.1.50.0.10</string>
 	<key>CFBundleDisplayName</key>
 	<string>Qwant for Safari</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.2.0</string>
+	<string>3.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Database Quota</key>
@@ -28,11 +28,11 @@
 				<key>Filename</key>
 				<string>html/popup.html</string>
 				<key>Height</key>
-				<real>225</real>
+				<integer>130</integer>
 				<key>Identifier</key>
 				<string>qwant-popup</string>
 				<key>Width</key>
-				<real>530</real>
+				<integer>520</integer>
 			</dict>
 		</array>
 		<key>Toolbar Items</key>
@@ -43,7 +43,7 @@
 				<key>Identifier</key>
 				<string>qwant-button</string>
 				<key>Image</key>
-				<string>img/icon16.png</string>
+				<string>img/q-128x128.png</string>
 				<key>Label</key>
 				<string>Qwant for Safari</string>
 				<key>Palette Label</key>
@@ -57,11 +57,6 @@
 	<dict>
 		<key>Scripts</key>
 		<dict>
-			<key>End</key>
-			<array>
-				<string>js/engines.js</string>
-				<string>js/qwant.js</string>
-			</array>
 			<key>Start</key>
 			<array>
 				<string>js/contextmenu.js</string>
@@ -69,16 +64,11 @@
 		</dict>
 		<key>Stylesheets</key>
 		<array>
-			<string>css/engines/common.css</string>
-			<string>css/engines/yahoo.css</string>
-			<string>css/engines/google.css</string>
-			<string>css/engines/yandex.css</string>
-			<string>css/engines/mailru.css</string>
-			<string>css/engines/bing.css</string>
+			<string>css/qwant.css</string>
 		</array>
 	</dict>
 	<key>Description</key>
-	<string>QWANT est un moteur de recherche qui vous montre l'univers d'internet "différemment". Zéro tracking, Zéro filtres, Zéro Cookies.</string>
+	<string>Qwant - The search engine that respects your privacy.</string>
 	<key>DeveloperIdentifier</key>
 	<string>76Z29F769J</string>
 	<key>ExtensionInfoDictionaryVersion</key>
@@ -90,385 +80,6 @@
 			<key>Allowed Domains</key>
 			<array>
 				<string>*.qwant.com</string>
-				<string>www.bing.com</string>
-				<string>go.mail.ru</string>
-				<string>*.search.yahoo.com</string>
-				<string>yandex.ru</string>
-				<string>www.google.com</string>
-				<string>www.google.ad</string>
-				<string>www.google.ae</string>
-				<string>www.google.com.af</string>
-				<string>www.google.com.ag</string>
-				<string>www.google.com.ai</string>
-				<string>www.google.am</string>
-				<string>www.google.co.ao</string>
-				<string>www.google.com.ar</string>
-				<string>www.google.as</string>
-				<string>www.google.at</string>
-				<string>www.google.com.au</string>
-				<string>www.google.az</string>
-				<string>www.google.ba</string>
-				<string>www.google.com.bd</string>
-				<string>www.google.be</string>
-				<string>www.google.bf</string>
-				<string>www.google.bg</string>
-				<string>www.google.com.bh</string>
-				<string>www.google.bi</string>
-				<string>www.google.bj</string>
-				<string>www.google.com.bn</string>
-				<string>www.google.com.bo</string>
-				<string>www.google.com.br</string>
-				<string>www.google.bs</string>
-				<string>www.google.co.bw</string>
-				<string>www.google.by</string>
-				<string>www.google.com.bz</string>
-				<string>www.google.ca</string>
-				<string>www.google.cd</string>
-				<string>www.google.cf</string>
-				<string>www.google.cg</string>
-				<string>www.google.ch</string>
-				<string>www.google.ci</string>
-				<string>www.google.co.ck</string>
-				<string>www.google.cl</string>
-				<string>www.google.cm</string>
-				<string>www.google.cn</string>
-				<string>www.google.com.co</string>
-				<string>www.google.co.cr</string>
-				<string>www.google.com.cu</string>
-				<string>www.google.cv</string>
-				<string>www.google.cz</string>
-				<string>www.google.de</string>
-				<string>www.google.dj</string>
-				<string>www.google.dk</string>
-				<string>www.google.dm</string>
-				<string>www.google.com.do</string>
-				<string>www.google.dz</string>
-				<string>www.google.com.ec</string>
-				<string>www.google.ee</string>
-				<string>www.google.com.eg</string>
-				<string>www.google.es</string>
-				<string>www.google.com.et</string>
-				<string>www.google.fi</string>
-				<string>www.google.com.fj</string>
-				<string>www.google.fm</string>
-				<string>www.google.fr</string>
-				<string>www.google.ga</string>
-				<string>www.google.ge</string>
-				<string>www.google.gg</string>
-				<string>www.google.com.gh</string>
-				<string>www.google.com.gi</string>
-				<string>www.google.gl</string>
-				<string>www.google.gm</string>
-				<string>www.google.gp</string>
-				<string>www.google.gr</string>
-				<string>www.google.com.gt</string>
-				<string>www.google.gy</string>
-				<string>www.google.com.hk</string>
-				<string>www.google.hn</string>
-				<string>www.google.hr</string>
-				<string>www.google.ht</string>
-				<string>www.google.hu</string>
-				<string>www.google.co.id</string>
-				<string>www.google.ie</string>
-				<string>www.google.co.il</string>
-				<string>www.google.im</string>
-				<string>www.google.co.in</string>
-				<string>www.google.iq</string>
-				<string>www.google.is</string>
-				<string>www.google.it</string>
-				<string>www.google.je</string>
-				<string>www.google.com.jm</string>
-				<string>www.google.jo</string>
-				<string>www.google.co.jp</string>
-				<string>www.google.co.ke</string>
-				<string>www.google.com.kh</string>
-				<string>www.google.ki</string>
-				<string>www.google.kg</string>
-				<string>www.google.co.kr</string>
-				<string>www.google.com.kw</string>
-				<string>www.google.kz</string>
-				<string>www.google.la</string>
-				<string>www.google.com.lb</string>
-				<string>www.google.li</string>
-				<string>www.google.lk</string>
-				<string>www.google.co.ls</string>
-				<string>www.google.lt</string>
-				<string>www.google.lu</string>
-				<string>www.google.lv</string>
-				<string>www.google.com.ly</string>
-				<string>www.google.co.ma</string>
-				<string>www.google.md</string>
-				<string>www.google.me</string>
-				<string>www.google.mg</string>
-				<string>www.google.mk</string>
-				<string>www.google.ml</string>
-				<string>www.google.mn</string>
-				<string>www.google.ms</string>
-				<string>www.google.com.mt</string>
-				<string>www.google.mu</string>
-				<string>www.google.mv</string>
-				<string>www.google.mw</string>
-				<string>www.google.com.mx</string>
-				<string>www.google.com.my</string>
-				<string>www.google.co.mz</string>
-				<string>www.google.com.na</string>
-				<string>www.google.com.nf</string>
-				<string>www.google.com.ng</string>
-				<string>www.google.com.ni</string>
-				<string>www.google.ne</string>
-				<string>www.google.nl</string>
-				<string>www.google.no</string>
-				<string>www.google.com.np</string>
-				<string>www.google.nr</string>
-				<string>www.google.nu</string>
-				<string>www.google.co.nz</string>
-				<string>www.google.com.om</string>
-				<string>www.google.com.pa</string>
-				<string>www.google.com.pe</string>
-				<string>www.google.com.ph</string>
-				<string>www.google.com.pk</string>
-				<string>www.google.pl</string>
-				<string>www.google.pn</string>
-				<string>www.google.com.pr</string>
-				<string>www.google.ps</string>
-				<string>www.google.pt</string>
-				<string>www.google.com.py</string>
-				<string>www.google.com.qa</string>
-				<string>www.google.ro</string>
-				<string>www.google.ru</string>
-				<string>www.google.rw</string>
-				<string>www.google.com.sa</string>
-				<string>www.google.com.sb</string>
-				<string>www.google.sc</string>
-				<string>www.google.se</string>
-				<string>www.google.com.sg</string>
-				<string>www.google.sh</string>
-				<string>www.google.si</string>
-				<string>www.google.sk</string>
-				<string>www.google.com.sl</string>
-				<string>www.google.sn</string>
-				<string>www.google.so</string>
-				<string>www.google.sm</string>
-				<string>www.google.st</string>
-				<string>www.google.com.sv</string>
-				<string>www.google.td</string>
-				<string>www.google.tg</string>
-				<string>www.google.co.th</string>
-				<string>www.google.com.tj</string>
-				<string>www.google.tk</string>
-				<string>www.google.tl</string>
-				<string>www.google.tm</string>
-				<string>www.google.tn</string>
-				<string>www.google.to</string>
-				<string>www.google.com.tr</string>
-				<string>www.google.tt</string>
-				<string>www.google.com.tw</string>
-				<string>www.google.co.tz</string>
-				<string>www.google.com.ua</string>
-				<string>www.google.co.ug</string>
-				<string>www.google.co.uk</string>
-				<string>www.google.com.uy</string>
-				<string>www.google.co.uz</string>
-				<string>www.google.com.vc</string>
-				<string>www.google.co.ve</string>
-				<string>www.google.vg</string>
-				<string>www.google.co.vi</string>
-				<string>www.google.com.vn</string>
-				<string>www.google.vu</string>
-				<string>www.google.ws</string>
-				<string>www.google.rs</string>
-				<string>www.google.co.za</string>
-				<string>www.google.co.zm</string>
-				<string>www.google.co.zw</string>
-				<string>www.google.cat</string>
-				<string>www.google.com</string>
-				<string>www.google.ad</string>
-				<string>www.google.ae</string>
-				<string>www.google.com.af</string>
-				<string>www.google.com.ag</string>
-				<string>www.google.com.ai</string>
-				<string>www.google.am</string>
-				<string>www.google.co.ao</string>
-				<string>www.google.com.ar</string>
-				<string>www.google.as</string>
-				<string>www.google.at</string>
-				<string>www.google.com.au</string>
-				<string>www.google.az</string>
-				<string>www.google.ba</string>
-				<string>www.google.com.bd</string>
-				<string>www.google.be</string>
-				<string>www.google.bf</string>
-				<string>www.google.bg</string>
-				<string>www.google.com.bh</string>
-				<string>www.google.bi</string>
-				<string>www.google.bj</string>
-				<string>www.google.com.bn</string>
-				<string>www.google.com.bo</string>
-				<string>www.google.com.br</string>
-				<string>www.google.bs</string>
-				<string>www.google.co.bw</string>
-				<string>www.google.by</string>
-				<string>www.google.com.bz</string>
-				<string>www.google.ca</string>
-				<string>www.google.cd</string>
-				<string>www.google.cf</string>
-				<string>www.google.cg</string>
-				<string>www.google.ch</string>
-				<string>www.google.ci</string>
-				<string>www.google.co.ck</string>
-				<string>www.google.cl</string>
-				<string>www.google.cm</string>
-				<string>www.google.cn</string>
-				<string>www.google.com.co</string>
-				<string>www.google.co.cr</string>
-				<string>www.google.com.cu</string>
-				<string>www.google.cv</string>
-				<string>www.google.cz</string>
-				<string>www.google.de</string>
-				<string>www.google.dj</string>
-				<string>www.google.dk</string>
-				<string>www.google.dm</string>
-				<string>www.google.com.do</string>
-				<string>www.google.dz</string>
-				<string>www.google.com.ec</string>
-				<string>www.google.ee</string>
-				<string>www.google.com.eg</string>
-				<string>www.google.es</string>
-				<string>www.google.com.et</string>
-				<string>www.google.fi</string>
-				<string>www.google.com.fj</string>
-				<string>www.google.fm</string>
-				<string>www.google.fr</string>
-				<string>www.google.ga</string>
-				<string>www.google.ge</string>
-				<string>www.google.gg</string>
-				<string>www.google.com.gh</string>
-				<string>www.google.com.gi</string>
-				<string>www.google.gl</string>
-				<string>www.google.gm</string>
-				<string>www.google.gp</string>
-				<string>www.google.gr</string>
-				<string>www.google.com.gt</string>
-				<string>www.google.gy</string>
-				<string>www.google.com.hk</string>
-				<string>www.google.hn</string>
-				<string>www.google.hr</string>
-				<string>www.google.ht</string>
-				<string>www.google.hu</string>
-				<string>www.google.co.id</string>
-				<string>www.google.ie</string>
-				<string>www.google.co.il</string>
-				<string>www.google.im</string>
-				<string>www.google.co.in</string>
-				<string>www.google.iq</string>
-				<string>www.google.is</string>
-				<string>www.google.it</string>
-				<string>www.google.je</string>
-				<string>www.google.com.jm</string>
-				<string>www.google.jo</string>
-				<string>www.google.co.jp</string>
-				<string>www.google.co.ke</string>
-				<string>www.google.com.kh</string>
-				<string>www.google.ki</string>
-				<string>www.google.kg</string>
-				<string>www.google.co.kr</string>
-				<string>www.google.com.kw</string>
-				<string>www.google.kz</string>
-				<string>www.google.la</string>
-				<string>www.google.com.lb</string>
-				<string>www.google.li</string>
-				<string>www.google.lk</string>
-				<string>www.google.co.ls</string>
-				<string>www.google.lt</string>
-				<string>www.google.lu</string>
-				<string>www.google.lv</string>
-				<string>www.google.com.ly</string>
-				<string>www.google.co.ma</string>
-				<string>www.google.md</string>
-				<string>www.google.me</string>
-				<string>www.google.mg</string>
-				<string>www.google.mk</string>
-				<string>www.google.ml</string>
-				<string>www.google.mn</string>
-				<string>www.google.ms</string>
-				<string>www.google.com.mt</string>
-				<string>www.google.mu</string>
-				<string>www.google.mv</string>
-				<string>www.google.mw</string>
-				<string>www.google.com.mx</string>
-				<string>www.google.com.my</string>
-				<string>www.google.co.mz</string>
-				<string>www.google.com.na</string>
-				<string>www.google.com.nf</string>
-				<string>www.google.com.ng</string>
-				<string>www.google.com.ni</string>
-				<string>www.google.ne</string>
-				<string>www.google.nl</string>
-				<string>www.google.no</string>
-				<string>www.google.com.np</string>
-				<string>www.google.nr</string>
-				<string>www.google.nu</string>
-				<string>www.google.co.nz</string>
-				<string>www.google.com.om</string>
-				<string>www.google.com.pa</string>
-				<string>www.google.com.pe</string>
-				<string>www.google.com.ph</string>
-				<string>www.google.com.pk</string>
-				<string>www.google.pl</string>
-				<string>www.google.pn</string>
-				<string>www.google.com.pr</string>
-				<string>www.google.ps</string>
-				<string>www.google.pt</string>
-				<string>www.google.com.py</string>
-				<string>www.google.com.qa</string>
-				<string>www.google.ro</string>
-				<string>www.google.ru</string>
-				<string>www.google.rw</string>
-				<string>www.google.com.sa</string>
-				<string>www.google.com.sb</string>
-				<string>www.google.sc</string>
-				<string>www.google.se</string>
-				<string>www.google.com.sg</string>
-				<string>www.google.sh</string>
-				<string>www.google.si</string>
-				<string>www.google.sk</string>
-				<string>www.google.com.sl</string>
-				<string>www.google.sn</string>
-				<string>www.google.so</string>
-				<string>www.google.sm</string>
-				<string>www.google.st</string>
-				<string>www.google.com.sv</string>
-				<string>www.google.td</string>
-				<string>www.google.tg</string>
-				<string>www.google.co.th</string>
-				<string>www.google.com.tj</string>
-				<string>www.google.tk</string>
-				<string>www.google.tl</string>
-				<string>www.google.tm</string>
-				<string>www.google.tn</string>
-				<string>www.google.to</string>
-				<string>www.google.com.tr</string>
-				<string>www.google.tt</string>
-				<string>www.google.com.tw</string>
-				<string>www.google.co.tz</string>
-				<string>www.google.com.ua</string>
-				<string>www.google.co.ug</string>
-				<string>www.google.co.uk</string>
-				<string>www.google.com.uy</string>
-				<string>www.google.co.uz</string>
-				<string>www.google.com.vc</string>
-				<string>www.google.co.ve</string>
-				<string>www.google.vg</string>
-				<string>www.google.co.vi</string>
-				<string>www.google.com.vn</string>
-				<string>www.google.vu</string>
-				<string>www.google.ws</string>
-				<string>www.google.rs</string>
-				<string>www.google.co.za</string>
-				<string>www.google.co.zm</string>
-				<string>www.google.co.zw</string>
-				<string>www.google.cat</string>
-				<string>encrypted.google.com</string>
 			</array>
 			<key>Include Secure Pages</key>
 			<true/>

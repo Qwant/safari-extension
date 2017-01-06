@@ -1,200 +1,75 @@
-html {
-	overflow: hidden;
-	background: -webkit-linear-gradient(top, rgb(253,252,255), rgb(248,247,252));
-	height: auto;
-	border: 0;
-	color: #333;
-}
-
 body {
-	font-size: 13px;
-	height: 225px;
-	background-image: url(../img/qwant-powered.png);
-	background-repeat: no-repeat;
-	background-position: left bottom;
-	border: 0;
-	margin: 0;
-	padding: 0;
+    width           : 520px;
+    height          : 130px;
+    margin          : 0;
+    padding         : 16px 24px;
+    box-sizing      : border-box;
+    background      : rgba(255, 255, 255, 0.65) url('../img/poweredByQwant-x2.png') no-repeat 364px 92px;
+    background-size : 136px 20px;
+    font-family     : "helvetica", sans-serif;
 }
 
-img {
-	border: 0;
+*:focus {
+	outline : none;
 }
 
-input, body, a, select {
-	font-family: Segoe UI,Arial,sans-serif;
-	text-shadow: 0px 1px 0px #fff;
+.search-qwant {
+    height         : 46px;
+    margin-bottom  : 24px;
+    padding-bottom : 6px;
+    border-bottom  : 2px solid rgb(122, 124, 128);
 }
 
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, select, p, blockquote, th, td {
-	margin: 0;
-	padding: 0;
+.search-qwant-logo {
+    display         : inline-block;
+    width           : 40px;
+    height          : 40px;
+    vertical-align  : top;
+    background      : url('../img/qwant-x2.png') no-repeat center center;
+    background-size : 25px 25px;
 }
 
-a {
-	text-decoration: none;
-	color: #1168cc;
+#search-input {
+    display    : inline-block;
+    width      : calc(100% - 92px);
+    background : none;
+    border     : none;
+    box-shadow : none;
+    color      : rgb(100, 102, 104);
+    font-size  : 18px;
+    height     : 40px;
 }
 
-#qwant_popup {
-	width: 525px;
-	height: 43px;
+.search-glass-logo {
+    display         : inline-block;
+    width           : 40px;
+    height          : 40px;
+    border          : none;
+    padding         : 0;
+    vertical-align  : bottom;
+    background      : url('../img/search-x2.png') no-repeat center center;
+    background-size : 25px 25px;
+    cursor          : pointer;
 }
 
-#qwant_popup_form {
-	float: left;
-	margin: 0;
-	width: 525px;
-	padding: 10px;
+.option-element {
+    display        : inline-block;
+    width          : 49%;
+    vertical-align : top;
 }
 
-#qwant_popup_submit_wrapper {
-	width: 70px;
-	float: right;
-	height: 43px;
-	overflow: hidden;
+.option-element input {
+    display        : inline-block;
+    vertical-align : top;
 }
 
-#qwant_popup_submit_button {
-	background: url('../img/widget-searchbar-button-off.png') center center no-repeat;
-	width: 60px;
-	float: left;
-	height: 43px;
-	border: 0;
-	cursor: pointer;
+.option-element label {
+    display        : inline-block;
+    width          : calc(100% - 30px);
+    font-size      : 14px;
+    color          : #393B3D;
 }
 
-#qwant_popup_submit_button:active {
-	background: url('../img/widget-searchbar-button-over.png') center center no-repeat;
-}
-
-::-webkit-input-placeholder {
-	color: #888;
-}
-
-#qwant_popup_search_input {
-	width: 441px;
-	float: right;
-	background: #fff;
-	color: #222;
-	height: 28px;
-	padding: 4px 6px 5px 6px;
-	margin-top: 3px;
-	outline: none;
-	border: #CCC solid 1px;
-	font-size: 17px;
-	border-radius: 2px;
-	box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.05), inset 0px 1px 2px 0px rgba(0,0,0,0.05);
-}
-
-#addons {
-	display: block;
-	margin-bottom: 4px;
-	margin-left: 11px;
-	clear: both;
-}
-
-#addons:before {
-	content:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFlSURBVHjaYvz//z8DJYCJgULAAmMwMjJiSOqZWluC6Eunjx5Hl4O5nAmLJlkozQWkfEEYyobLIQNGmEkgF0AV1ADxYyAWBmIuqLpvQPwWiEHyLUAXPcbqgounjjCoq6kyQBVyIUmB2LIgOZAarGEAAvpmNm95eXngfBNjQzB95ux5MP3s+XOwGqxeAEpYQv0sDNM8d/rkWyB2cmauGswQqFc2A11yHMULQA0iUpKSwjD+q1ev3wLDpReEQWyYOEgNSC2GC4DA8uOnT77egWHCnz9/gYndgtJqIALkva3rV73l5+PbDOSiugBo03GgRAvQBmQvqsE0Q21nAKkBqcUViGAvgEIbFGAwl4BsBmm+ees2TM03rAaAogikCGjA40+fPwuHxySBo3Llknnf+Hh53wLlwFGJnGpRDABKgBJIC5Tmio0KByUqBqBmkNg3oJgsSA5nSsSS3i1h4YMrLzBSmp0BAgwAVV+SAIy7xxQAAAAASUVORK5CYII=);
-	vertical-align: middle;
-	margin-right: 2px;
-	display: inline-block;
-}
-
-.main-browsers, .other-browsers, .options {
-	float:left;
-	width:250px;
-	display: inline-block;
-	margin:0 5px;
-	
-}
-
-fieldset {
-	border-radius: 3px;
-	border: 1px solid rgba(0,0,0,.15);
-	background: rgba( 234, 234, 234, 0.1);
-}
-
-legend {
-	margin-left:5px;
-	padding: 0 4px;
-	letter-spacing: -.05em;
-	font-family: 'Lucida Sans Unicode', Arial, 'Sans Serif';
-	color: #666;
-}
-
-ul {
-	list-style-type: none;
-	margin: 10px 0;
-}
-
-li {
-	margin:10px 0 0 10px;
-}
-
-/* Base for label styling */
-[type="checkbox"]:not(:checked),
-[type="checkbox"]:checked {
-	position: absolute;
-	left: -9999px;
-}
-[type="checkbox"]:not(:checked) + label,
-[type="checkbox"]:checked + label {
-	position: relative;
-	padding-left: 25px;
-	cursor: pointer;
-	padding-top: 2px;
-}
-/* checkbox aspect */
-[type="checkbox"]:not(:checked) + label:before,
-[type="checkbox"]:checked + label:before {
-	content: '';
-	position: absolute;
-	left:0; top: 2px;
-	width: 17px; height: 17px;
-	border: 1px solid rgba(0,0,0,.25);
-	background: #f8f8f8;
-	border-radius: 2px;
-	box-shadow: inset 0 1px 3px rgba(0,0,0,.05)
-}
-/* checked mark aspect */
-[type="checkbox"]:not(:checked) + label:after,
-[type="checkbox"]:checked + label:after {
-	content: '✔';
-	position: absolute;
-	top: 0; left: 4px;
-	font-size: 14px;
-	color: #09ad7e;
-	transition: all .2s;
-}
-/* checked mark aspect changes */
-[type="checkbox"]:not(:checked) + label:after {
-	opacity: 0;
-	transform: scale(0);
-}
-[type="checkbox"]:checked + label:after {
-	opacity: 1;
-	transform: scale(1);
-}
-/* disabled checkbox */
-[type="checkbox"]:disabled:not(:checked) + label:before,
-[type="checkbox"]:disabled:checked + label:before {
-	box-shadow: none;
-	border-color: #bbb;
-	background-color: #ddd;
-}
-[type="checkbox"]:disabled:checked + label:after {
-	color: #999;
-}
-[type="checkbox"]:disabled + label {
-	color: #aaa;
-}
-/* accessibility */
-[type="checkbox"]:checked:focus + label:before,
-[type="checkbox"]:not(:checked):focus + label:before {
-	border: 1px dotted blue;
-}
-/* hover style just for information */
-label:hover:before {
-	border: 1px solid #4778d9!important;
+.option-element--2 {
+    text-align : right;
 }

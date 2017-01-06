@@ -11,8 +11,11 @@ document.addEventListener("contextmenu", handleContextMenu, false);
  * @function handleContextMenu
  * @param event
  */
-function handleContextMenu(event) {
-	var sel = window.parent.getSelection().toString();
-	sel = sel.replace(/^\s+|\s+$/g, '');
-	safari.self.tab.setContextMenuEventUserInfo(event, {type: 'text', data: sel});
+function handleContextMenu (event) {
+    var sel = window.parent.getSelection().toString();
+    sel     = sel.replace(/^\s+|\s+$/g, '');
+    safari.self.tab.setContextMenuEventUserInfo(event, {
+        type: 'text',
+        data: sel
+    });
 }

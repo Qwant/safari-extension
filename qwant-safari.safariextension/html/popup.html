@@ -1,68 +1,26 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>QWANT</title>
-		<meta charset='utf-8'>
-		<meta name='description' content='' />
-		<link rel="stylesheet" href='../css/popup.css' />
-	</head>
-	<body>
+<head>
+    <title>QWANT</title>
+    <meta charset='utf-8'>
+    <meta name='description' content=''/>
+    <link rel="stylesheet" href='../css/popup.css'/>
+</head>
+<body>
 
-		<div id="qwant_popup">
-			<form id="qwant_popup_form" name="x">
-				<div id="qwant_popup_submit_wrapper">
-					<input id="qwant_popup_submit_button" value="" onclick="search();" />
-				</div>
-				<input type="text" autocomplete="off"
-							 name="q" id="qwant_popup_search_input" placeholder="Search with Qwant..." data-msg="placeholder"
-							 value="" onkeypress="event.keyCode===13?(search()):(null)">
-			</form>
-		</div>
-		<div class='options-bloc'>
-			<fieldset class='main-browsers'>
-				<legend>Embedding in main search engines :</legend>
-				<ul>
-					<li>
-						<input type="checkbox" id="googleEmbed" onclick="googleOpt();">
-						<label for="googleEmbed">Google</label>
-					</li>
-					<li>
-						<input type="checkbox" id="bingEmbed" onclick="bingOpt();">
-						<label for="bingEmbed">Bing</label>
-					</li>
-					<li>
-						<input type="checkbox" id="yahooEmbed" onclick="yahooOpt();">
-						<label for="yahooEmbed">Yahoo</label>
-					</li>
-				</ul>
-			</fieldset>
-			<fieldset class='other-browsers'>
-				<legend>Embedding in other search engines :</legend>
-				<ul>
-					<li>
-						<input type="checkbox" id="yandexEmbed" onclick="yandexOpt();">
-						<label for="yandexEmbed">Yandex</label>
-					</li>
-					<li>
-						<input type="checkbox" id="mailruEmbed" onclick="mailruOpt();">
-						<label for="mailruEmbed">Mail.ru</label>
-					</li>
-				</ul>
-			</fieldset>
-			<fieldset class='options'>
-				<legend>Options :</legend>
-				<ul>
-					<li>
-						<input type="checkbox" id="saveLast" onclick="savelastOpt();">
-						<label for="saveLast">Save your last search</label>
-					</li>
-					<li>
-						<input type="checkbox" id="engine" onclick="engineOpt();">
-						<label for="engine">Define Qwant as Search Engine</label>
-					</li>
-				</ul>
-			</fieldset>
-		</div>
-		<script type="text/javascript" src="../js/popup.js"></script>
-	</body>
+<div id="qwant_popup">
+    <form class="search-qwant" name="x" onsubmit="return search();">
+        <span class="search-qwant-logo"></span>
+        <input id="search-input" autocomplete="off" placeholder="Search with Qwant.com" name="q" type="text" onkeypress="event.keyCode===13 ? ( return search() ) : ( return null )">
+        <input class="search-glass-logo" id="" value="" type="submit" onclick=" return search();">
+    </form>
+</div>
+<div class='options-bloc'>
+    <div class="option-element option-element--1">
+        <input type="checkbox" id="engine" onclick="engineOpt();">
+        <label for="engine">Define Qwant as Search Engine</label>
+    </div>
+</div>
+<script type="text/javascript" src="../js/popup.js"></script>
+</body>
 </html>

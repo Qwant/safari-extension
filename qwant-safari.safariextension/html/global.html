@@ -1,128 +1,90 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>Qwant for Safari</title>
-	</head>
-	<body>
-		<script type="text/javascript">
-			'use strict';
+<head>
+    <meta charset="utf-8"/>
+    <title>Qwant for Safari</title>
+</head>
+<body>
+<script type="text/javascript">
+    'use strict';
 
-			var QWANT_URL = 'https://www.qwant.com/?q=',
-				SMART_URL = 'https://api.qwant.com/api/search/smart/?q=',
-				THANK_URL = 'https://www.qwant.com/extension/thanks/safari',
-				lastClickedLink,
-				lastSelectedText;
+    var QWANT_URL = 'https://www.qwant.com/?client=qwant-safari&q=',
+        THANK_URL = 'https://www.qwant.com/extension/thanks',
+        lastSelectedText;
 
-			if (safari.extension.settings.justInstalled === true) {
-				openTab(THANK_URL);
-				safari.extension.settings.justInstalled = false;
-			}
+    if (safari.extension.settings.justInstalled === true) {
+        openTab(THANK_URL);
+        safari.extension.settings.justInstalled = false;
+    }
 
-			function openTab(url) {
-				var tab = safari.application.activeBrowserWindow.openTab();
-				tab.url = url;
-				tab.activate();
-			}
+    function openTab (url) {
+        var tab = safari.application.activeBrowserWindow.openTab();
+        tab.url = url;
+        tab.activate();
+    }
 
-			function checkMessage(event) {
-				if (event.name === 'ask_embed') {
-					var req = new XMLHttpRequest();
-					req.open('GET', SMART_URL + event.message.query + '&locale=' + getLocale(event.message.ext) + '&client=safari-ext', true);
-					req.onreadystatechange = function (data) {
-						if (req.readyState !== 4) { return; }
-						var res = JSON.parse(req.responseText);
-						localStorage.lastSearch = event.message.query;
-						event.target.page.dispatchMessage('reply_embed', {json: res.data.result.items, query: event.message.query});
-					};
-					req.send(null);
-				}
-				if (event.name === 'ask_allowed') {
-					var allowed;
-					switch (event.message.hostname) {
-						case 'bing':
-							allowed = safari.extension.settings.bing;
-							break;
-						case 'google':
-							allowed = safari.extension.settings.google;
-							break;
-						case 'mail':
-							allowed = safari.extension.settings.mail;
-							break;
-						case 'yahoo':
-							allowed = safari.extension.settings.yahoo;
-							break;
-						case 'yandex':
-							allowed = safari.extension.settings.yandex;
-							break;
-					};
-					event.target.page.dispatchMessage('reply_allowed', {allowed:allowed})
-				}
-			}
+    function handleCommand (event) {
+        if (event.command === 'cm-search') {
+            openTab(QWANT_URL + lastSelectedText);
+        }
+    }
 
-			function handleCommand(event) {
-				if (event.command === 'cm-search') {
-					openTab(QWANT_URL + lastSelectedText);
-				}
-			}
+    function handleContextMenu (event) {
+        var query = event.userInfo;
+        if (query.type === 'text') {
+            lastSelectedText = query.data;
+            event.contextMenu.appendContextMenuItem("cm-search", "Search '" + lastSelectedText.substr(0, 15) + "[...]' with Qwant");
+        }
+    }
 
-			function getLocale(ext) {
-				var handledLanguages	= {
-					'co': 'en_US',
-					'en': 'en_US',
-					'uk': 'en_GB',
-					'us': 'en_US',
-					'es': 'es_ES',
-					'it': 'it_IT',
-					'de': 'de_DE',
-					'fr': 'fr_FR',
-					'nl': 'nl_NL',
-					'pt': 'pt_PT',
-					'ru': 'ru_RU',
-					'ja': 'ja_JP',
-					'ar': 'ar_XA',
-					'pl': 'pl_PL',
-					'el': 'el_GR',
-					'tr': 'tr_TR',
-					'he': 'he_IL',
-					'fi': 'fi_FI',
-					'zh': 'zh_CN'
-				};
-				if (!(ext in handledLanguages)) {
-					if (!(ext in handledLanguages)) {
-						return 'en_US';
-					} else {
-						return handledLanguages[ext];
-					}
-				} else {
-					return handledLanguages[ext];
-				}
-			}
+function checkURL(url) {
+      var expr = /^(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/i;
+      var regex = RegExp(expr);
+      var localhost = RegExp(/^(https?:\/\/)?localhost(:\d+)?/i)
+      var about = RegExp(/(about|safari-extension):.*/);
+      var nums = RegExp(/^(\d+\.\d+).*/i);
+      return (url.match(regex) || url.match(about) || url.match(localhost)) && !url.match(nums) ;
+    }
 
-			function handleContextMenu(event) {
-				var query = event.userInfo;
-				if (query.type === 'text') {
-					lastSelectedText = query.data;
-					event.contextMenu.appendContextMenuItem("cm-search", "Search '" + lastSelectedText.substr(0, 15) + "[...]' with Qwant");
-				}
-			}
+    if (window.SafariBeforeSearchEvent) {
+        safari.application.addEventListener('beforeSearch', function(evt) {
+          if (!safari.extension.settings.engine) {
+            return;
+          }
 
-			function handleBeforeSearch(e) {
-				e.preventDefault();
-				var qwtEngine = safari.extension.settings.engine,
-					url;
-				if (false === qwtEngine) {
-					url = 'http://' + e.query + '.com'
-				} else {
-					url = QWANT_URL + encodeURIComponent(e.query).replace(/%20/g,'+');
-				}
-				e.target.url = url;
-			}
+          var query = evt.query;
 
-			safari.application.addEventListener('message', checkMessage, false);
-			safari.application.addEventListener('contextmenu', handleContextMenu, false);
-			safari.application.addEventListener('command', handleCommand, false);
-			safari.application.addEventListener('beforeSearch', handleBeforeSearch, false);
-		</script>
-	</body>
+          if (!checkURL(query)) {
+            evt.preventDefault();
+
+            var url = QWANT_URL + encodeURIComponent(query);
+            evt.target.url = url;
+          }
+        }, false);
+    } else {
+    // Use the new old beforeNavigate event on Safari 5
+        safari.application.addEventListener('beforeNavigate', function(evt) {
+            if (!safari.extension.settings.engine) {
+              return;
+            }
+            var url = evt.url;
+            if (!url) {
+                return;
+            }
+            url = url.replace(/^\w{2,8}:\/\//, '').replace(/\/$/, '');
+
+            if (!checkURL(url)) {
+              evt.preventDefault();
+
+              var url = QWANT_URL + encodeURIComponent(query) + '&bext=msl';
+              evt.target.url = url;
+            }
+        }, false);
+    }
+
+    safari.application.addEventListener('contextmenu', handleContextMenu, false);
+    safari.application.addEventListener('command', handleCommand, false);
+    safari.application.addEventListener('beforeSearch', handleBeforeSearch, false);
+</script>
+</body>
 </html>
